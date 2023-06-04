@@ -1,0 +1,91 @@
+{% extends "default.html" %}
+{% block content %}
+
+    <!-- DataTales Example -->
+                <div class="page-header-content">
+                    <div class="row align-items-center justify-content-between pt-3">
+                        <div class="col-auto mb-3">
+                            <h1 class="page-header-title">
+                                <div class="page-header-icon"><i data-feather="user"></i></div>
+                                Blocks List
+                            </h1>
+                        </div>
+                        <div class="col-12 col-xl-auto mb-3">
+                            
+                            <a class="btn btn-primary btn-user btn-block" href="{% url 'block.add' %}">
+                                <i class="me-1" data-feather="user-plus"></i>
+                                Add New Block
+                            </a>
+                        </div>
+                    </div>
+                </div>
+       <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Block Number</th>
+                            <th>Person Name</th>
+                            <th>Verient</th>
+                            <th>Bench Number</th>
+                            <th>Block Picture</th>
+                            <th>Block Height</th>
+                            <th>Block Length</th>
+                            <th>Block Width</th>
+                            <th>Block CBM</th>
+                            <th>Measurement Weight</th>
+
+
+                            <th>Registration date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% if results %}
+                        {% for data in results %}
+                        <tr>
+                            <td>{{data.block_number}}</td>
+                            <td>{{data.name_of_person}}</td>
+                            <td>{{data.varient}}</td>
+                            <td>{{data.bench_number}}</td>
+                            <td>
+                                {% if data.block_picture %}
+                                <img data-fancybox src="{{data.block_picture.url}}" style="height:80px; width:80px">
+                                {% else %}
+                                -
+                                {% endif %}
+                            </td>
+                            <td>{{data.block_height}}  CM</td>
+                            <td>{{data.block_length}}  CM</td>
+                            <td>{{data.block_width}}  CM</td>
+                            <td>{{data.cbm}}</td>
+                            <td>{{data.measurement_weight}}  </td>
+
+                            <td>{{data.created_at|date:"SHORT_DATE_FORMAT"}}</td>
+                            <td>
+                                {% comment %} <a class="btn btn-datatable btn-icon btn-transparent-dark me-2" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a> {% endcomment %}
+                                <a class="btn btn-datatable btn-icon btn-transparent-dark confirmDelete" href="{% url 'block.delete' data.id %}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    
+
+
+
+
+{% endblock content %}
+
+
