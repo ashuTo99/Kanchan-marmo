@@ -6,10 +6,10 @@ from .models import Block
 
 
 class BlockForm(forms.ModelForm):
-    block_number = forms.IntegerField(
+    block_number = forms.CharField(
         required=True,
         label='Block Number',
-        widget=forms.NumberInput(
+        widget=forms.TextInput(
             attrs={'class': "form-control ",
                    'placeholder': 'Block Number'}),
         error_messages={
@@ -56,7 +56,7 @@ class BlockForm(forms.ModelForm):
             'required': 'Verient is required'
         }
     )
-    BENCH_NUMBER = (("1","1"),("2","2"),("3","3"),("4","4"),("5","5"),("6","6"),("7","7"),("8","8"),("9","9"),("10","10"))
+    BENCH_NUMBER = (("1","Step No. 1"),("2","Step No. 2"),("3","Step No. 3"),("4","Step No. 4"),("5","Step No. 5"),("6","Step No. 6"),("7","Step No. 7"),("8","Step No. 8"),("9","Step No. 9"),("10","Step No. 10"))
     bench_number = forms.ChoiceField(
         required=True,
         label='Verient',

@@ -4,7 +4,7 @@ from django.db import models
 
 
 class Block(models.Model):
-    block_number = models.BigIntegerField(unique=True)
+    block_number = models.CharField(max_length=200,unique=True)
     varient = models.CharField(max_length=300,blank=True,null=True)
     bench_number = models.BigIntegerField(blank=True,null=True)
     name_of_person = models.CharField(max_length=300,blank=True,null=True)
